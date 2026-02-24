@@ -37,19 +37,19 @@ body {
 }
 
 /* ===============================
-   NAVBAR
+   NAVBAR BASE
 ================================= */
 
 .navbar {
   position: fixed;
   width: 100%;
-  padding: 24px 10%;
+  padding: 22px 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: rgba(0,0,0,0.65);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   z-index: 1000;
 }
 
@@ -59,17 +59,88 @@ body {
   letter-spacing: 1px;
 }
 
+/* ===============================
+   DESKTOP NAV
+================================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
 .nav-links a {
-  margin-left: 36px;
   text-decoration: none;
-  font-weight: 500;
   font-size: 0.95rem;
+  font-weight: 500;
   color: #ccc;
   transition: 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #8b5cf6;
+}
+
+/* ===============================
+   HAMBURGER
+================================= */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: white;
+  transition: 0.3s ease;
+}
+
+/* Animate hamburger */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(6px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-6px);
+}
+
+/* ===============================
+   MOBILE NAV
+================================= */
+
+@media (max-width: 900px) {
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.95);
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 0;
+
+    transform: translateY(-200%);
+    transition: 0.4s ease;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
 }
 
 /* ===============================
@@ -526,4 +597,96 @@ body {
 .case-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 0 40px rgba(139,92,246,0.6);
+}
+@media (max-width: 1024px) {
+
+  /* HERO STACK */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 140px 6% 100px 6%;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+
+  .hero-right {
+    margin-top: 50px;
+  }
+
+  .hero-right img {
+    width: 280px;
+  }
+
+  /* NAVBAR SPACING */
+  .nav-links a {
+    margin-left: 20px;
+    font-size: 0.85rem;
+  }
+
+  /* SECTION PADDING */
+  section {
+    padding: 100px 6%;
+  }
+
+}
+@media (max-width: 768px) {
+
+  /* HERO TEXT SCALE */
+  .name {
+    font-size: 2.5rem;
+  }
+
+  .role {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  /* STACK NAV LINKS */
+  .navbar {
+    padding: 18px 6%;
+  }
+
+  .nav-links {
+    display: none; /* Simple version for now */
+  }
+
+  /* CARDS FULL WIDTH */
+  .card-grid,
+  .projects-grid,
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* FOOTER STACK */
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-socials {
+    margin-top: 20px;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .project-card:hover,
+  .info-card:hover,
+  .about-card-3d:hover {
+    transform: none;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .cta-btn {
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
+
 }
